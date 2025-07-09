@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -75,27 +74,21 @@ function App() {
   };
 
   return (
-    <Router basename="/pomodoro-timer-website2">
-      <Routes>
-        <Route path="/" element={
-          <Container>
-            <h1>ポモドーロタイマー</h1>
-            <TimerDisplay>{formatTime(seconds)}</TimerDisplay>
-            <StatusDisplay>{status}</StatusDisplay>
-            <ControlButtons>
-              <Button primary={!isRunning} onClick={() => setIsRunning(!isRunning)}>
-                {isRunning ? '停止' : '開始'}
-              </Button>
-              <Button onClick={() => {
-                setSeconds(1500);
-                setIsRunning(false);
-                setStatus('準備中');
-              }}>リセット</Button>
-            </ControlButtons>
-          </Container>
-        } />
-      </Routes>
-    </Router>
+    <Container>
+      <h1>ポモドーロタイマー</h1>
+      <TimerDisplay>{formatTime(seconds)}</TimerDisplay>
+      <StatusDisplay>{status}</StatusDisplay>
+      <ControlButtons>
+        <Button primary={!isRunning} onClick={() => setIsRunning(!isRunning)}>
+          {isRunning ? '停止' : '開始'}
+        </Button>
+        <Button onClick={() => {
+          setSeconds(1500);
+          setIsRunning(false);
+          setStatus('準備中');
+        }}>リセット</Button>
+      </ControlButtons>
+    </Container>
   );
 }
 
